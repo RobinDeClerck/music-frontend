@@ -2,6 +2,8 @@
 
 <div class="row mt-5">
     <div class="col-3 mt-4" *ngFor="let album of albums; let i = index">
-        <img class="img-fluid" src="{{ album.image }}" alt="{{ album.name }}">
+        <a routerLink="/album/{{ album.name.toLowerCase() }}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <img class="img-fluid" src="{{ album.image }}" alt="{{ album.name }}">
+        </a>
     </div>
 </div>
