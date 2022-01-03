@@ -1,1 +1,7 @@
-<p>albums works!</p>
+<h1 class="text-center font-weight-bold mt-5">Albums</h1>
+
+<div class="row mt-5">
+    <div class="col-3 mt-4" *ngFor="let album of albums; let i = index">
+        <img class="img-fluid" src="{{ album.image }}" alt="{{ album.name }}">
+    </div>
+</div>
