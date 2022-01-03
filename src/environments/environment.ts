@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  //BRANK_EDGE_BASEURL: "https://album-service-server-robindeclerck.cloud.okteto.net"
-  BRANK_EDGE_BASEURL: "http://localhost:8053"
+  BRANK_EDGE_BASEURL: "https://album-service-server-robindeclerck.cloud.okteto.net"
 };
 
 /*
