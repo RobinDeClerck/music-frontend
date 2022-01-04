@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Album } from './album';
+import { FilledAlbum } from './filled-album';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,13 @@ export class AlbumService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     return this.httpClient.get<Album[]>(environment.BRANK_EDGE_BASEURL + "/albums", httpOptions);
+  }
+
+  getAlbum(maid: string): Observable<FilledAlbum> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.httpClient.get<FilledAlbum>(environment.BRANK_EDGE_BASEURL + "/albums/" + maid, httpOptions);
   }
 
   

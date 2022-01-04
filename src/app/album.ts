@@ -1,8 +1,8 @@
 export interface Album {
-    id: string
+    maid: string
     name: string
 
-    artist: string
+    mbid: string
     genre: string
     
     image: string

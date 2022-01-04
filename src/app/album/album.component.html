@@ -1,0 +1,21 @@
+<a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Go back to home</a>
+
+<h1 class="text-center font-weight-bold mt-5">{{ filledAlbum.name }}</h1>
+<h4 class="text-center font-weight-bold mb-5">{{ filledAlbum.artist.name }}</h4>
+
+<div class="row">
+    <div class="col-4">
+        <img class="img-fluid w-100" src="{{ filledAlbum.image }}" alt="{{ filledAlbum.name }}">
+    </div>
+    <div class="col">
+        <div *ngFor="let song of filledAlbum.songs">
+            <button (click)="onClickSongTitle(song.isrc)">
+                <p class="font-weight-bold h5">{{ song.title }}</p>
+            </button>
+
+            <iframe *ngIf="song.open" [src]="'https://open.spotify.com/embed/track/' + song.url + '?utm_source=generator' | safe"
+                width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+            </iframe>
+        </div>
+    </div>
+</div>
