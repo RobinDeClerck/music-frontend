@@ -40,10 +40,8 @@ export class AlbumComponent implements OnInit {
   getAlbum() {
     this.getAlbum$ = this.albumService.getAlbum(this.maid).subscribe(result => {
       this.filledAlbum = result
-      console.log(this.filledAlbum)
 
       this.albumLengthSeconds = this.filledAlbum.songs.reduce((acc, cur) => acc + cur.length, 0);
-      console.log(this.filledAlbum.songs.reduce((acc, cur) => acc + cur.length, 0))
     });
   }
 
