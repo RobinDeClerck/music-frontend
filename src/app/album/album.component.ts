@@ -20,9 +20,11 @@ export class AlbumComponent implements OnInit {
     songs: [],
     release: ''
   };
-  test: string = "https://open.spotify.com/embed/track/37JISltgxizbDAyNEEqkTY?utm_source=generator"
+
   maid: string = "";
   getAlbum$: Subscription = new Subscription();
+
+  albumLengthSeconds: number = 0;
 
   constructor(private albumService: AlbumService, private route: ActivatedRoute) { }
 
@@ -39,6 +41,9 @@ export class AlbumComponent implements OnInit {
     this.getAlbum$ = this.albumService.getAlbum(this.maid).subscribe(result => {
       this.filledAlbum = result
       console.log(this.filledAlbum)
+
+      this.albumLengthSeconds = this.filledAlbum.songs.reduce((acc, cur) => acc + cur.length, 0);
+      console.log(this.filledAlbum.songs.reduce((acc, cur) => acc + cur.length, 0))
     });
   }
 
