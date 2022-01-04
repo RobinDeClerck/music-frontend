@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Album } from '../album';
-import { AlbumService } from '../album.service';
+import { Album } from '../models/album';
+import { AlbumService } from '../services/album.service';
 
 @Component({
   selector: 'app-albums',

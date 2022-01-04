@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumComponent } from './album/album.component';
 import { SafePipe } from './safe.pipe';
+import { GenreComponent } from './genre/genre.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlbumsComponent,
     AlbumComponent,
-    SafePipe
+    SafePipe,
+    GenreComponent
   ],
   imports: [
     BrowserModule,

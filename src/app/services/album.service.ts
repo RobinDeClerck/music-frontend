@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Album } from './album';
-import { FilledAlbum } from './filled-album';
+import { Album } from '../models/album';
+import { FilledAlbum } from '../models/filled-album';
 
 @Injectable({
   providedIn: 'root'

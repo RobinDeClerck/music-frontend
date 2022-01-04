@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AlbumService } from '../album.service';
-import { FilledAlbum } from '../filled-album';
+import { FilledAlbum } from '../models/filled-album';
+import { AlbumService } from '../services/album.service';
 
 @Component({
   selector: 'app-album',

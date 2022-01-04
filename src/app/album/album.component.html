@@ -14,7 +14,7 @@
         <img class="img-fluid w-100" src="{{ filledAlbum.image }}" alt="{{ filledAlbum.name }}">
         <p class="font-weight-bold mt-3 h4">{{ filledAlbum.name }}</p>
         <p class="h5">Artist: {{ filledAlbum.artist.name }}</p>
-        <p class="h5">Genre: {{ filledAlbum.genre }}</p>
+        <p class="h5">Genre: <a routerLink="/genre/{{ filledAlbum.genre }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ filledAlbum.genre }}</a></p>
         <p class="h5">Release: {{ filledAlbum.release }}</p>
         <p class="h5">Length: {{ albumLengthSeconds*1000 | date:'mm:ss'}}</p>
     </div>
