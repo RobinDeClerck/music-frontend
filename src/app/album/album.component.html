@@ -3,7 +3,13 @@
 <h1 class="text-center font-weight-bold mt-5">{{ filledAlbum.name }}</h1>
 <h4 class="text-center font-weight-bold mb-5">{{ filledAlbum.artist.name }}</h4>
 
-<div class="row">
+<div *ngIf="!albumReady" class="d-flex justify-content-center">
+    <div class="spinner-border" style="width: 3rem; height: 3rem" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="albumReady" class="row">
     <div class="col-4">
         <img class="img-fluid w-100" src="{{ filledAlbum.image }}" alt="{{ filledAlbum.name }}">
         <p class="font-weight-bold mt-3 h4">{{ filledAlbum.name }}</p>

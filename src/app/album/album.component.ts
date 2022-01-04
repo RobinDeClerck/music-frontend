@@ -26,6 +26,8 @@ export class AlbumComponent implements OnInit {
 
   albumLengthSeconds: number = 0;
 
+  albumReady: boolean = false;
+
   constructor(private albumService: AlbumService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -42,6 +44,8 @@ export class AlbumComponent implements OnInit {
       this.filledAlbum = result
 
       this.albumLengthSeconds = this.filledAlbum.songs.reduce((acc, cur) => acc + cur.length, 0);
+
+      this.albumReady = true;
     });
   }
 

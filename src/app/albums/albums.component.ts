@@ -13,6 +13,8 @@ export class AlbumsComponent implements OnInit {
   albums: Album[] = []
   getAlbums$: Subscription = new Subscription();
 
+  albumReady: boolean = false;
+
   constructor(private albumService: AlbumService) { }
 
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class AlbumsComponent implements OnInit {
   getAlbums() {
     this.getAlbums$ = this.albumService.getAlbums().subscribe(result => {
       this.albums = result
+      this.albumReady = true
     });
   }
 }
