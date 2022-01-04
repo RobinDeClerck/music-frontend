@@ -26,8 +26,6 @@ export class AlbumsComponent implements OnInit {
   getAlbums() {
     this.getAlbums$ = this.albumService.getAlbums().subscribe(result => {
       this.albums = result
-      console.log(this.albums)
-      //console.log(result)
     });
   }
 }
