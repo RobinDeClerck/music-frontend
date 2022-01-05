@@ -1,4 +1,6 @@
-<a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Go back to home</a>
+<div class="mt-3">
+    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Go back to home</a>
+</div>
 
 <h1 class="text-center font-weight-bold mt-5">{{ filledAlbum.name }}</h1>
 <h4 class="text-center font-weight-bold mb-5">{{ filledAlbum.artist.name }}</h4>
@@ -13,7 +15,7 @@
     <div class="col-4">
         <img class="img-fluid w-100" src="{{ filledAlbum.image }}" alt="{{ filledAlbum.name }}">
         <p class="font-weight-bold mt-3 h4">{{ filledAlbum.name }}</p>
-        <p class="h5">Artist: {{ filledAlbum.artist.name }}</p>
+        <p class="h5">Artist: <a routerLink="/artist/{{ filledAlbum.artist.mbid }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ filledAlbum.artist.name }}</a></p>
         <p class="h5">Genre: <a routerLink="/genre/{{ filledAlbum.genre }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ filledAlbum.genre }}</a></p>
         <p class="h5">Release: {{ filledAlbum.release }}</p>
         <p class="h5">Length: {{ albumLengthSeconds*1000 | date:'mm:ss'}}</p>

@@ -1,0 +1,20 @@
+<div>
+    <img class="img-fluid w-100" src="{{ artist.bannerImage }}" alt="">
+</div>
+<div class="mt-3">
+    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Go back to home</a>
+</div>
+<h1 class="text-center font-weight-bold mt-5">{{ artist.name }}</h1>
+<h2 class="text-center font-weight-bold">{{ artist.type }}</h2>
+<div class="row mt-5 text-center">
+    <div class="col">
+        <h4>Origin country</h4>
+        <p>{{ artist.originCountry }}</p>
+    </div>
+    <div class="col">
+        <h4>Members</h4>
+        <ul>
+            <li *ngFor="let member of artist.members">{{member}}</li>
+        </ul>
+    </div>
+</div>

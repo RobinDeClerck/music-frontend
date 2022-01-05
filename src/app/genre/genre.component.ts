@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Genre } from '../models/genre';
-import { GenreService } from '../services/genre.service';
+import { BrankEdgeService } from '../services/brank-edge.service';
 
 @Component({
   selector: 'app-genre',
@@ -19,7 +19,7 @@ export class GenreComponent implements OnInit {
     description: ''
   };
 
-  constructor(private genreService: GenreService, private route: ActivatedRoute) { }
+  constructor(private brankEdgeService: BrankEdgeService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.genreName = this.route.snapshot.paramMap.get('genre')!;
@@ -31,7 +31,7 @@ export class GenreComponent implements OnInit {
   }
 
   getGenre() {
-    this.getGenre$ = this.genreService.getGenre(this.genreName).subscribe(result => {
+    this.getGenre$ = this.brankEdgeService.getGenre(this.genreName).subscribe(result => {
       this.genre = result
       console.log(result)
     });

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilledAlbum } from '../models/filled-album';
-import { AlbumService } from '../services/album.service';
+import { BrankEdgeService } from '../services/brank-edge.service';
 
 @Component({
   selector: 'app-album',
@@ -28,7 +28,7 @@ export class AlbumComponent implements OnInit {
 
   albumReady: boolean = false;
 
-  constructor(private albumService: AlbumService, private route: ActivatedRoute) { }
+  constructor(private brankEdgeService: BrankEdgeService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.maid = this.route.snapshot.paramMap.get('maid')!
@@ -40,7 +40,7 @@ export class AlbumComponent implements OnInit {
   }
 
   getAlbum() {
-    this.getAlbum$ = this.albumService.getAlbum(this.maid).subscribe(result => {
+    this.getAlbum$ = this.brankEdgeService.getAlbum(this.maid).subscribe(result => {
       this.filledAlbum = result
 
       this.albumLengthSeconds = this.filledAlbum.songs.reduce((acc, cur) => acc + cur.length, 0);

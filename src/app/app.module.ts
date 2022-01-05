@@ -8,6 +8,7 @@ import { AlbumsComponent } from './albums/albums.component';
 import { AlbumComponent } from './album/album.component';
 import { SafePipe } from './safe.pipe';
 import { GenreComponent } from './genre/genre.component';
+import { ArtistComponent } from './artist/artist.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { GenreComponent } from './genre/genre.component';
     AlbumsComponent,
     AlbumComponent,
     SafePipe,
-    GenreComponent
+    GenreComponent,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,
