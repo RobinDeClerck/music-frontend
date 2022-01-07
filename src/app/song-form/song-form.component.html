@@ -1,9 +1,14 @@
+<div class="mt-3">
+  <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Go back to home</a>
+</div>
+
 <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
   {{errorMessage}}
 </div>
 
-<h1>Form</h1>
-<br>
+<h1 *ngIf="isEdit" class="text-center font-weight-bold mt-5">Edit song</h1>
+<h1 *ngIf="isAdd" class="text-center font-weight-bold mt-5">Add song</h1>
+<h4  class="text-center font-weight-bold mb-5">{{ song.title }}</h4>
 
 <form (ngSubmit)="onSubmit()" #songForm="ngForm">
   <div class="form-group">
@@ -48,6 +53,6 @@
 
 
   </div>
-  <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!songForm.form.valid || isSubmitted">Add</button>
-  <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!songForm.form.valid || isSubmitted">Save</button>
+  <button type="submit" class="btn btn-success px-5" *ngIf="isAdd" [disabled]="!songForm.form.valid || isSubmitted">Add</button>
+  <button type="submit" class="btn btn-success px-5" *ngIf="isEdit" [disabled]="!songForm.form.valid || isSubmitted">Save</button>
 </form>
