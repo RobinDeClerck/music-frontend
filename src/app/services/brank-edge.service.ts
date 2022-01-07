@@ -22,6 +22,20 @@ export class BrankEdgeService {
     return this.httpClient.get<Album[]>(environment.BRANK_EDGE_BASEURL + "/albums", httpOptions);
   }
 
+  getArtists(): Observable<Artist[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.httpClient.get<Artist[]>(environment.BRANK_EDGE_BASEURL + "/artists", httpOptions);
+  }
+
+  getGenres(): Observable<Genre[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.httpClient.get<Genre[]>(environment.BRANK_EDGE_BASEURL + "/genres", httpOptions);
+  }
+
   getAlbum(maid: string): Observable<FilledAlbum> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -55,7 +69,7 @@ export class BrankEdgeService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.post<Song>(environment.BRANK_EDGE_BASEURL + "/songs/", {headers: headers});
+    return this.httpClient.post<Song>(environment.BRANK_EDGE_BASEURL + "songs" + "?id=" + 0 + "&isrc=" + song.isrc + "&mbid=" + song.mbid + "&maid=" + song.maid + "&url=" + song.url + "&length=" + song.length + "&title=" + song.title + "&genre=" + song.genre, {headers: headers});
 }
 
   putSong(ISRC:string, song: Song): Observable<Song> {

@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Album } from '../models/album';
+import { Artist } from '../models/artist';
+import { Genre } from '../models/genre';
 import { Song } from '../models/song';
 import { BrankEdgeService } from '../services/brank-edge.service';
 
@@ -13,6 +16,15 @@ export class SongFormComponent implements OnInit, OnDestroy {
   isAdd: boolean = false;
   isEdit: boolean = false;
   songISRC: string = "";
+
+  artists: Artist[] = []
+  getArtists$: Subscription = new Subscription();
+
+  genres: Genre[] = []
+  getGenres$: Subscription = new Subscription();
+
+  albums: Album[] = []
+  getAlbums$: Subscription = new Subscription();
 
   song: Song = {id:0, genre: "", title: "", length: 0, url: "", maid: "", mbid: "", isrc: "", open: false};
 
@@ -35,12 +47,37 @@ export class SongFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.getAlbums();
+    this.getGenres();
+    this.getArtists();
   }
 
   ngOnDestroy(): void {
     this.song$.unsubscribe();
     this.postSong$.unsubscribe();
     this.putSong$.unsubscribe();
+
+    this.getArtists$.unsubscribe();
+    this.getGenres$.unsubscribe();
+    this.getAlbums$.unsubscribe();
+  }
+
+  getAlbums() {
+    this.getAlbums$ = this.brankEdgeService.getAlbums().subscribe(result => {
+      this.albums = result
+    });
+  }
+
+  getGenres() {
+    this.getGenres$ = this.brankEdgeService.getGenres().subscribe(result => {
+      this.genres = result
+    });
+  }
+
+  getArtists() {
+    this.getArtists$ = this.brankEdgeService.getArtists().subscribe(result => {
+      this.artists = result
+    });
   }
 
   onSubmit() {
@@ -48,7 +85,7 @@ export class SongFormComponent implements OnInit, OnDestroy {
     if (this.isAdd) {
       this.postSong$ = this.brankEdgeService.postSong(this.song).subscribe(result => {
                 //all went well
-                this.router.navigateByUrl("/albums");
+                this.router.navigateByUrl("/");
               },
               error => {
                 this.errorMessage = error.message;
@@ -58,7 +95,7 @@ export class SongFormComponent implements OnInit, OnDestroy {
     if (this.isEdit) {
       this.putSong$ = this.brankEdgeService.putSong(this.songISRC, this.song).subscribe(result => {
                 //all went well
-                this.router.navigateByUrl("/albums");
+                this.router.navigateByUrl("/");
               },
               error => {
                 this.errorMessage = error.message;
