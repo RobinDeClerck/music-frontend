@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -62,11 +62,7 @@ export class BrankEdgeService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    let rsong = {id:song.id, genre: song.genre, title:song.title, length: song.length, url: song.url, maid: song.maid, mbid: song.mbid, isrc: song.isrc}
-
-    console.log(rsong);
-
-    return this.httpClient.put<Song>(environment.BRANK_EDGE_BASEURL + "songs", rsong, {headers: headers});
+    return this.httpClient.put<Song>(environment.BRANK_EDGE_BASEURL + "songs" + "?isrc=" + song.isrc + "&mbid=" + song.mbid + "&maid=" + song.maid + "&url=" + song.url + "&length=" + song.length + "&title=" + song.title + "&genre=" + song.genre, {headers: headers});
   }
 
   deleteSong(ISCR: string): Observable<Song> {
