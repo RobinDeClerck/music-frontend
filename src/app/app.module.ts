@@ -9,6 +9,8 @@ import { AlbumComponent } from './album/album.component';
 import { SafePipe } from './safe.pipe';
 import { GenreComponent } from './genre/genre.component';
 import { ArtistComponent } from './artist/artist.component';
+import { SongFormComponent } from './song-form/song-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { ArtistComponent } from './artist/artist.component';
     AlbumComponent,
     SafePipe,
     GenreComponent,
-    ArtistComponent
+    ArtistComponent,
+    SongFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
