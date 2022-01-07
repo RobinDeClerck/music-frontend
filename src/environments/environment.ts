@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BRANK_EDGE_BASEURL: "http://localhost:8050"
+  BRANK_EDGE_BASEURL: "https://brank-edge-service-server-robindeclerck.cloud.okteto.net/"
 };
 
 /*

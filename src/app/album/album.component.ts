@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Subscription } from 'rxjs';
 import { FilledAlbum } from '../models/filled-album';
 import { BrankEdgeService } from '../services/brank-edge.service';
@@ -21,14 +22,16 @@ export class AlbumComponent implements OnInit {
     release: ''
   };
 
+  errorMessage: string = "";
   maid: string = "";
   getAlbum$: Subscription = new Subscription();
+  deleteSong$: Subscription = new Subscription();
 
   albumLengthSeconds: number = 0;
 
   albumReady: boolean = false;
 
-  constructor(private brankEdgeService: BrankEdgeService, private route: ActivatedRoute) { }
+  constructor(private brankEdgeService: BrankEdgeService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.maid = this.route.snapshot.paramMap.get('maid')!
@@ -37,6 +40,7 @@ export class AlbumComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.getAlbum$.unsubscribe();
+    this.deleteSong$.unsubscribe();
   }
 
   getAlbum() {
@@ -58,5 +62,28 @@ export class AlbumComponent implements OnInit {
       this.filledAlbum.songs[songIndex].open = true;
     }
   }
+
+  onDelete(ISRC: string) {
+    this.deleteSong$ = this.brankEdgeService.deleteSong(ISRC).subscribe(result => {
+      //all went well
+      console.log(result);
+      this.getAlbum();
+    }, error => {
+      //error
+      console.log(error.message);
+      this.errorMessage = error.message;
+    });
+  }
+
+  add() {
+    //Navigate to form in add mode
+    this.router.navigate(['song/form'], {state: {mode: 'add'}});
+  }
+
+  edit(ISRC: string) {
+    //Navigate to form in edit mode
+    this.router.navigate(['song/form'], {state: {ISRC: ISRC, mode: 'edit'}});
+  }
+
 
 }

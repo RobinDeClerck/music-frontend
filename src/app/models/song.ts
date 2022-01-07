@@ -1,4 +1,5 @@
 export interface Song {
+    id:number
     genre: string
     title: string
     length: number
