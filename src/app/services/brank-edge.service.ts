@@ -69,14 +69,14 @@ export class BrankEdgeService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.post<Song>(environment.BRANK_EDGE_BASEURL + "songs" + "?id=" + 0 + "&isrc=" + song.isrc + "&mbid=" + song.mbid + "&maid=" + song.maid + "&url=" + song.url + "&length=" + song.length + "&title=" + song.title + "&genre=" + song.genre, {headers: headers});
+    return this.httpClient.post<Song>(environment.BRANK_EDGE_BASEURL + "/songs" + "?id=" + 0 + "&isrc=" + song.isrc + "&mbid=" + song.mbid + "&maid=" + song.maid + "&url=" + song.url + "&length=" + song.length + "&title=" + song.title + "&genre=" + song.genre, {headers: headers});
 }
 
   putSong(ISRC:string, song: Song): Observable<Song> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.put<Song>(environment.BRANK_EDGE_BASEURL + "songs" + "?isrc=" + song.isrc + "&mbid=" + song.mbid + "&maid=" + song.maid + "&url=" + song.url + "&length=" + song.length + "&title=" + song.title + "&genre=" + song.genre, {headers: headers});
+    return this.httpClient.put<Song>(environment.BRANK_EDGE_BASEURL + "/songs" + "?isrc=" + song.isrc + "&mbid=" + song.mbid + "&maid=" + song.maid + "&url=" + song.url + "&length=" + song.length + "&title=" + song.title + "&genre=" + song.genre, {headers: headers});
   }
 
   deleteSong(ISCR: string): Observable<Song> {
